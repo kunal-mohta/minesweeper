@@ -1,8 +1,8 @@
 function startgame(){
 
-	var rows = prompt("Enter the number of rows (max 30)");
-	var cols = prompt("Enter the number of columns (max 30)");
-	var bombs = prompt("Enter the number of bombs (do not enter more than possible)");
+	var rows = document.getElementById("userrows").value;
+	var cols = document.getElementById("usercols").value;
+	var bombs = document.getElementById("userbombs").value;
 
 	if(bombs >= (rows*cols) || rows > 30 || cols > 30){alert("Invalid entry(ies)!"); location.reload();}
 
@@ -176,4 +176,4 @@ function startgame(){
 }
 
 
-startgame();
+//startgame();

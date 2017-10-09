@@ -1,3 +1,18 @@
+section{
+	font-size: 3vh;
+}
+
+input{
+	height:3vh;
+	font-size: 2vh;
+}
+
+button{
+	font-size: 2vh;
+	height:3vh;
+	width:5vw;
+}
+
 td{
 	height:20px;
 	width:20px;
