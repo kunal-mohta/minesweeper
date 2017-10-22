@@ -13,7 +13,7 @@ button{
 	width:5vw;
 }
 
-td{
+td{	
 	height:20px;
 	width:20px;
 	background:#808080;
@@ -28,4 +28,8 @@ td:active{
 .open{
 	background: #a9a9a9;
 	color:rgba(0,0,0,1);
+}
+
+img{
+	height:15px
 }

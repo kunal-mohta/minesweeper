@@ -1,10 +1,41 @@
+document.getElementById("userrows").addEventListener("keyup", function(){
+		document.getElementById("userbombs").setAttribute("placeholder", "max "+document.getElementById("userrows").value*document.getElementById("usercols").value);
+		if(document.getElementById("userrows").value > 30){
+			document.getElementById("userrows").style.background = "red";
+		}
+		else{
+			document.getElementById("userrows").style.background = "white";	
+		}
+}); 
+document.getElementById("usercols").addEventListener("keyup", function(){
+		document.getElementById("userbombs").setAttribute("placeholder", "max "+document.getElementById("userrows").value*document.getElementById("usercols").value);
+		if(document.getElementById("usercols").value > 30){
+			document.getElementById("usercols").style.background = "red";
+		}
+		else{
+			document.getElementById("usercols").style.background = "white";	
+		}
+}); 
+document.getElementById("userbombs").addEventListener("keyup", function(){
+	if(document.getElementById("userbombs").value > document.getElementById("userrows").value*document.getElementById("usercols").value || document.getElementById("userbombs").value == 0){
+		document.getElementById("userbombs").style.background = "red";
+	}
+	else{
+		document.getElementById("userbombs").style.background = "white";	
+	}
+});
+
 function startgame(){
 
 	var rows = document.getElementById("userrows").value;
 	var cols = document.getElementById("usercols").value;
 	var bombs = document.getElementById("userbombs").value;
 
-	if(bombs >= (rows*cols) || rows > 30 || cols > 30){alert("Invalid entry(ies)!"); location.reload();}
+	document.getElementById("userrows").value = "";
+	document.getElementById("usercols").value = "";
+	document.getElementById("userbombs").value = "";
+
+	if(bombs >= (rows*cols) || bombs == 0 || rows > 30 || cols > 30){alert("Invalid entry(ies)!"); location.reload();}
 
 	var table = document.getElementsByTagName("table")[0];
 
@@ -85,7 +116,7 @@ function startgame(){
 
 		else{
 			this.setAttribute("id", "selected");
-			this.setAttribute("class", "open");
+			this.classList.add("open");
 			var a,b;
 			for(i=1;i<=rows;i++){
 				for(j=1;j<=cols;j++){
@@ -173,7 +204,19 @@ function startgame(){
 		}
 	});
 
+			var prevcontent;
+	for(i=0;i<document.getElementsByTagName("td").length;i++){
+		document.getElementsByTagName("td")[i].addEventListener("contextmenu", function(e){
+			e = window.event;
+			e.preventDefault();
+
+			if(this.innerHTML == "<img src=\"flag.svg\">"){
+				this.innerHTML = prevcontent;
+			}
+			else if(!this.classList.contains("open")){
+				prevcontent = this.innerHTML;
+				this.innerHTML = "<img src = 'flag.svg'>";
+			}
+		});
+	}
 }
-
-
-//startgame();
