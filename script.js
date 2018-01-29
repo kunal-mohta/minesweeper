@@ -106,7 +106,105 @@ function startgame(){
 
 
 	//function to be called on clicking a tile
-	$('td').on("click",function(){
+	// $('td').on("click",function(){
+	// 	if(this.className == 'bomb'){
+	// 		for(i=0;i<bombs;i++){
+	// 			document.getElementsByClassName("bomb")[i].style.background = 'red';
+	// 		}
+	// 		setTimeout(function(){alert("game over, play again");location.reload();}, 500);
+	// 	}
+
+	// 	else{
+	// 		this.setAttribute("id", "selected");
+	// 		this.classList.add("open");
+	// 		var a,b;
+	// 		for(i=1;i<=rows;i++){
+	// 			for(j=1;j<=cols;j++){
+	// 				if(document.getElementsByTagName("tr")[i-1].childNodes[j-1].id == 'selected'){
+	// 					a = i;
+	// 					b = j;
+	// 					break;
+	// 				}
+	// 			}
+	// 		}
+
+
+	// 		function digging(x,y){
+	// 			for(p=x-1;p<=x+1;p++){
+	// 			for(q=y-1;q<=y+1;q++){
+	// 				if(p == x && q == y){continue;}
+
+	// 				else{
+	// 					if(p<=0 || q<=0 || p>rows || q>cols){continue;}
+	// 					else if(document.getElementsByTagName("tr")[p-1].childNodes[q-1].className == 'empty'){
+	// 						document.getElementsByTagName("tr")[p-1].childNodes[q-1].className = "empty open";
+	// 						var l = p;
+	// 						var m = q;
+	// 						digging(l,m);
+	// 						digging(l,m);
+	// 						digging(l,m);
+	// 						digging(l,m);
+	// 						digging(l,m);
+	// 						digging(l,m);
+	// 					}
+	// 					else if(document.getElementsByTagName("tr")[p-1].childNodes[q-1].className == "empty open"){
+	// 						continue;
+	// 					}
+	// 					else{
+	// 						continue;
+	// 					}
+	// 				}
+	// 			}
+	// 		}
+	// 		}
+	// 		digging(a,b);
+	// 		digging(a,b);
+	// 		digging(a,b);
+	// 		digging(a,b);
+	// 		digging(a,b);
+	// 		digging(a,b);
+
+	// 		var emptytiles = 0;
+	// 		for(i=1;i<=rows;i++){
+	// 			for(j=1;j<=cols;j++){
+	// 				if(document.getElementsByTagName("tr")[i-1].childNodes[j-1].className == 'empty open'){
+	// 					for(p=i-1;p<=i+1;p++){
+	// 			for(q=j-1;q<=j+1;q++){
+	// 				if(p == i && q == j){continue;}
+
+	// 				else{
+	// 					if(p<=0 || q<=0 || p>rows || q>cols){continue;}
+	// 					else if(document.getElementsByTagName("tr")[p-1].childNodes[q-1].className != 'bomb' && document.getElementsByTagName("tr")[p-1].childNodes[q-1].className != 'empty open'){
+	// 						document.getElementsByTagName("tr")[p-1].childNodes[q-1].className = 'open';
+	// 					}
+	// 				}
+	// 			}
+	// 		}
+	// 				}
+	// 			}
+	// 		}
+	// 		this.removeAttribute("id");
+	// 	}
+
+	// 	var remaining = 0;
+
+	// 	for(i=0;i<rows;i++){
+	// 		for(j=0;j<cols;j++){
+	// 			if(document.getElementsByTagName("tr")[i].childNodes[j].className != 'open' && document.getElementsByTagName("tr")[i].childNodes[j].className != 'empty open'){
+	// 				remaining++;
+	// 			}
+	// 		}
+	// 	}
+	// 	if(remaining == bombs){
+	// 		alert("you have won the game");
+	// 		for(i=0;i<bombs;i++){
+	// 			document.getElementsByClassName("bomb")[i].style.background = 'red';
+	// 		}
+	// 		setTimeout(function(){location.reload();}, 500);
+	// 	}
+	// });
+
+	function tileClick(){
 		if(this.className == 'bomb'){
 			for(i=0;i<bombs;i++){
 				document.getElementsByClassName("bomb")[i].style.background = 'red';
@@ -202,7 +300,11 @@ function startgame(){
 			}
 			setTimeout(function(){location.reload();}, 500);
 		}
-	});
+	}
+
+	for(i=0;i<document.getElementsByTagName("td").length;i++){
+		document.getElementsByTagName("td")[i].addEventListener("click", tileClick);
+	}
 
 			var prevcontent;
 	for(i=0;i<document.getElementsByTagName("td").length;i++){
